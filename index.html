@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Valentine Special💕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- QUESTION BOX -->
+  <div class="box" id="question">
+    <h1>Oye MUMY...🥰</h1>
+    <h2>Will You Accept My LOVE? 💕💍</h2>
+
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 😈</button>
+  </div>
+
+  <!-- RESULT BOX -->
+  <div class="box" id="result">
+    <h1> 🥰 Yeahh!!! 🥰</h1>
+    <h2>Best Decision Ever 🤩</h2>
+
+
+    <!-- Swag GIF -->
+    <img id="gif" 
+      src="https://yt3.googleusercontent.com/ytc/AIdro_m4TUN034n4fBLW4DAxxA2xhpD5kcev310BexcDCT-Lmbc=s900-c-k-c0x00ffffff-no-rj"
+      alt="swag gif">
+
+    <h2>I Love Youuu Mumy 😍💘</h2>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const question = document.getElementById("question");
+    const result = document.getElementById("result");
+
+    // NO button move randomly inside question box
+    noBtn.addEventListener("mouseover", () => {
+      const boxRect = question.getBoundingClientRect();
+
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const x = Math.random() * (boxRect.width - btnWidth);
+      const y = Math.random() * (boxRect.height - btnHeight);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // YES click -> show result perfectly center
+    yesBtn.addEventListener("click", () => {
+      question.style.display = "none";
+      result.style.display = "flex";
+
+      // hearts effect
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        const hearts = ["💖", "💘", "💕", "❤️", "😍"];
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 30 + 20 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+
+      }, 200);
+    });
+  </script>
+
+</body>
+</html>
